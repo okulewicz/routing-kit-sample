@@ -9,7 +9,7 @@ WORKDIR /routing-kit/RoutingKit
 RUN make
 # Get data
 WORKDIR /routing-kit
-RUN wget https://download.geofabrik.de/europe/poland/mazowieckie-latest.osm.pbf > /routing-kit/file.pbf
+RUN wget https://download.geofabrik.de/europe/faroe-islands-latest.osm.pbf > /routing-kit/file.pbf
 
 # Copy the main.cpp file
 COPY main.cpp .

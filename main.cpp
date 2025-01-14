@@ -8,9 +8,12 @@ using namespace RoutingKit;
 using namespace std;
 
 int main(){
+    cout << "Application started" << endl;
 	// Load a car routing graph from OpenStreetMap-based data
 	auto graph = simple_load_osm_car_routing_graph_from_pbf("file.pbf");
+    cout << "Graph loaded" << endl;
 	auto tail = invert_inverse_vector(graph.first_out);
+    cout << "Tail computed" << endl;
 
 	// Build the shortest path index
 	auto ch = ContractionHierarchy::build(
@@ -18,9 +21,11 @@ int main(){
 		tail, graph.head, 
 		graph.travel_time
 	);
+    cout << "CH built" << endl;
 
 	// Build the index to quickly map latitudes and longitudes
 	GeoPositionToNode map_geo_position(graph.latitude, graph.longitude);
+    cout << "GeoPositionToNode built" << endl;
 
 	// Besides the CH itself we need a query object. 
 	ContractionHierarchyQuery ch_query(ch);
